@@ -4,12 +4,10 @@
 \alias{eigen_det}
 \title{A faster-than-base determinant function}
 \usage{
-eigen_det(X, num_cores = 1)
+eigen_det(X)
 }
 \arguments{
 \item{X}{A numeric matrix of size p x p}
-
-\item{num_cores}{The number of cores to use}
 }
 \value{
 The determinant as a scalar numeric value

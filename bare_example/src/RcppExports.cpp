@@ -12,20 +12,30 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // eigen_det_cpp
-double eigen_det_cpp(const Eigen::Map<Eigen::MatrixXd> X, int n_cores);
-RcppExport SEXP _bare_eigen_det_cpp(SEXP XSEXP, SEXP n_coresSEXP) {
+double eigen_det_cpp(const Eigen::Map<Eigen::MatrixXd> X);
+RcppExport SEXP _bare_eigen_det_cpp(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd> >::type X(XSEXP);
-    Rcpp::traits::input_parameter< int >::type n_cores(n_coresSEXP);
-    rcpp_result_gen = Rcpp::wrap(eigen_det_cpp(X, n_cores));
+    rcpp_result_gen = Rcpp::wrap(eigen_det_cpp(X));
     return rcpp_result_gen;
+END_RCPP
+}
+// set_eigen_num_threads_cpp
+void set_eigen_num_threads_cpp(int n_cores);
+RcppExport SEXP _bare_set_eigen_num_threads_cpp(SEXP n_coresSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n_cores(n_coresSEXP);
+    set_eigen_num_threads_cpp(n_cores);
+    return R_NilValue;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_bare_eigen_det_cpp", (DL_FUNC) &_bare_eigen_det_cpp, 2},
+    {"_bare_eigen_det_cpp", (DL_FUNC) &_bare_eigen_det_cpp, 1},
+    {"_bare_set_eigen_num_threads_cpp", (DL_FUNC) &_bare_set_eigen_num_threads_cpp, 1},
     {NULL, NULL, 0}
 };
 
