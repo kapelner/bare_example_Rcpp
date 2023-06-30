@@ -1,6 +1,6 @@
 # cpp files
-*.o
-*.dll
+bare_example/src/*.o
+bare_example/src/*.dll
 
 # History files
 .Rhistory
